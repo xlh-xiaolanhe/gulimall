@@ -17,3 +17,5 @@ buildNumber.properties
 
 .idea
 **/.gitignore
+
+# 以上是设置只提交源码和pom.xml

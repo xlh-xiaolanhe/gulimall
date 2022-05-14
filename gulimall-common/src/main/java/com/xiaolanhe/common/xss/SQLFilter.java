@@ -8,7 +8,7 @@
 
 package com.xiaolanhe.common.xss;
 
-import io.renren.common.exception.RRException;
+import com.xiaolanhe.common.utils.RRException;
 import org.apache.commons.lang.StringUtils;
 
 /**

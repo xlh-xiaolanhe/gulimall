@@ -8,9 +8,11 @@
 
 package com.xiaolanhe.common.utils;
 
-import io.renren.common.validator.group.AliyunGroup;
-import io.renren.common.validator.group.QcloudGroup;
-import io.renren.common.validator.group.QiniuGroup;
+
+
+import com.xiaolanhe.common.group.AliyunGroup;
+import com.xiaolanhe.common.group.QcloudGroup;
+import com.xiaolanhe.common.group.QiniuGroup;
 
 import java.util.Optional;
 import java.util.stream.Stream;

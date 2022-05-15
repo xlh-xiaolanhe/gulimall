@@ -6,7 +6,7 @@ spring:
 
     alicloud:
       access-key: LTAI5tGi8SKLvpVu8SpEqrYs
-      secret-key: 4HF3nMfs8GN0TAQLGhpYst79uvaEE4
+      secret-key: 
       oss:
         endpoint: oss-cn-hangzhou.aliyuncs.com
         bucket: gulimall-xiaolanhe

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2022/5/15 22:01
  */
 
+// 声明式的远程调用
 @FeignClient("gulimall-coupon")
 public interface CouponFeginService {
 

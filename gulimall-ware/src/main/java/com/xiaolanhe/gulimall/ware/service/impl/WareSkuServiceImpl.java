@@ -1,11 +1,16 @@
 package com.xiaolanhe.gulimall.ware.service.impl;
 
+import com.xiaolanhe.common.utils.R;
+import com.xiaolanhe.gulimall.ware.Vo.SkuHasStockVo;
+import com.xiaolanhe.gulimall.ware.fegin.ProductFeginService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -26,6 +31,9 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
 
     @Autowired
     WareSkuService wareSkuService;
+
+    @Autowired
+    ProductFeginService productFeginService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -59,9 +67,39 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             skuEntity.setStock(skuNum);
             skuEntity.setWareId(wareId);
             skuEntity.setStockLocked(0);
+
+            try{
+                // 远程查询sku的名字，如果失败，整个事务无需回滚
+                // 1. 自己catch异常
+                //TODO 还可以用什么方法让出现异常后不需要回滚
+                R info = productFeginService.info(skuId);
+                Map<String,Object> data = (Map<String,Object>) info.get("data");
+                if(info.getCode() == 0){
+                    skuEntity.setSkuName((String) data.get("skuName"));
+                }
+            }catch (Exception e){
+
+            }
+
             wareSkuDao.insert(skuEntity);
         }else{
             wareSkuDao.addStock(skuId,wareId,skuNum);
         }
+    }
+
+    @Override
+    public List<SkuHasStockVo> getSkuHasStock(List<Long> skuIds) {
+
+        List<SkuHasStockVo> collect = skuIds.stream().map(skuId -> {
+            SkuHasStockVo vo = new SkuHasStockVo();
+
+            // 查询当前sku的总库存量
+            Long count = baseMapper.getSkuStock(skuId);
+            vo.setSkuId(skuId);
+            vo.setHasStock(count == null ? false : count > 0);
+            return vo;
+        }).collect(Collectors.toList());
+
+        return collect;
     }
 }

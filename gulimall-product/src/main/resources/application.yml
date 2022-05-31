@@ -8,6 +8,13 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
 
+  thymeleaf:
+    cache: true
+
+  redis:
+    host: 192.168.235.132
+    port: 6379
+
   cloud:
     nacos:
       discovery:

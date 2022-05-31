@@ -5,6 +5,7 @@ import com.xiaolanhe.gulimall.product.vo.SkuHasStockVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import com.xiaolanhe.common.utils.R;
 
 import java.util.List;
 
@@ -20,5 +21,5 @@ public interface WareFeginService {
 
     // 查询sku是否有库存
     @PostMapping("/ware/waresku/hasstock")
-    List<SkuHasStockVo> getSkuHasStock(@RequestBody List<Long> skuIds);
+    R getSkuHasStock(@RequestBody List<Long> skuIds);
 }

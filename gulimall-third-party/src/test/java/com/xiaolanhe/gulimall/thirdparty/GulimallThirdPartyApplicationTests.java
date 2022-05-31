@@ -28,7 +28,7 @@ public class GulimallThirdPartyApplicationTests {
         String endpoint = "oss-cn-hangzhou.aliyuncs.com";
         // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
         String accessKeyId = "LTAI5tGi8SKLvpVu8SpEqrYs";
-        String accessKeySecret = "4HF3nMfs8GN0TAQLGhpYst79uvaEE4";*/
+    
         // 填写Bucket名称，例如examplebucket。
         String bucketName = "gulimall-xiaolanhe";
         // 填写Object完整路径，完整路径中不能包含Bucket名称，例如exampledir/exampleobject.txt。

@@ -9,11 +9,12 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
 
   thymeleaf:
-    cache: true
+    cache: false
 
   redis:
     host: 192.168.235.132
     port: 6379
+    password: ggsxb
 
   cloud:
     nacos:

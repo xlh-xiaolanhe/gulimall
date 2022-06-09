@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.xiaolanhe.gulimall.product.entity.BrandEntity;
 import com.xiaolanhe.gulimall.product.entity.ProductAttrValueEntity;
+import com.xiaolanhe.gulimall.product.service.BrandService;
 import com.xiaolanhe.gulimall.product.service.ProductAttrValueService;
 import com.xiaolanhe.gulimall.product.vo.AttrRespVo;
 import com.xiaolanhe.gulimall.product.vo.AttrVo;
@@ -40,6 +42,8 @@ public class AttrController {
 
     @Autowired
     ProductAttrValueService productAttrValueService;
+
+
 
     @GetMapping("/base/listforspu/{spuId}")
     public R baseAttrlistforspu(@PathVariable("spuId") Long spuId)
@@ -83,6 +87,8 @@ public class AttrController {
 
         return R.ok().put("attr", respVo);
     }
+
+
 
     /**
      * 保存
